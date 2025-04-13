@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "GameMath",
+			"Path": "..\\Source\\GameMath.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "GameMathEditor",
+			"Path": "..\\Source\\GameMathEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
