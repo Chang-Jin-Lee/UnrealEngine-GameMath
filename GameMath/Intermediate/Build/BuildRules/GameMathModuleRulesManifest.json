@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"D:\\Github\\UnrealEngine-GameMath\\GameMath\\Source\\GameMath\\GameMath.Build.cs",
-		"D:\\Github\\UnrealEngine-GameMath\\GameMath\\Source\\GameMath.Target.cs",
-		"D:\\Github\\UnrealEngine-GameMath\\GameMath\\Source\\GameMathEditor.Target.cs"
-	],
-	"EngineVersion": "5.5.4"
-}
