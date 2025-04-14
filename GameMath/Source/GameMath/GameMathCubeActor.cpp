@@ -60,7 +60,7 @@ void AGameMathCubeActor::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, 
 	bool bFromSweep, const FHitResult& SweepResult)
 {
 	FVector contactPos =OverlappedComponent->GetComponentLocation();
-	FVector normal = OverlappedComponent->GetRightVector().GetSafeNormal();
+	FVector normal = OverlappedComponent->GetForwardVector().GetSafeNormal();
 	moveDir = ReflectVector(moveDir, normal); // Custom Reflrectio
 
 	DrawDebugLine(GetWorld(), contactPos, 2*normal, FColor::Blue, false, 5);
