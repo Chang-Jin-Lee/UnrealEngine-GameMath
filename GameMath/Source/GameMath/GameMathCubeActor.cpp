@@ -29,14 +29,14 @@ void AGameMathCubeActor::BeginPlay()
 void AGameMathCubeActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
+	//BoundCheck();
+	
 	Move(DeltaTime);
 }
 
 void AGameMathCubeActor::Move(float DeltaTime)
 {
-	BoundCheck();
-	
 	FVector cur = GetActorLocation();
 	SetActorLocation(cur + moveDir * moveSpeed * DeltaTime);
 }
@@ -59,26 +59,12 @@ FVector AGameMathCubeActor::ReflectVector(FVector dir, FVector inNormal)
 void AGameMathCubeActor::OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
 	bool bFromSweep, const FHitResult& SweepResult)
 {
-	FVector contactPos =OverlappedComponent->GetComponentLocation();
-	FVector normal = OverlappedComponent->GetForwardVector().GetSafeNormal();
+	FVector contactPos = OtherComp->GetComponentLocation();
+	FVector normal = OtherComp->GetForwardVector().GetSafeNormal();
 	moveDir = ReflectVector(moveDir, normal); // Custom Reflrectio
 
 	DrawDebugLine(GetWorld(), contactPos, 2*normal, FColor::Blue, false, 5);
 	DrawDebugLine(GetWorld(), contactPos, 2*moveDir, FColor::Red, false, 5);
 	
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "AGameMathCubeActor::NotifyActorBeginOverlap");
-}
-
-void AGameMathCubeActor::NotifyActorBeginOverlap(AActor* OtherActor)
-{
-	Super::NotifyActorBeginOverlap(OtherActor);
-
-	FVector contactPos = OtherActor->GetActorLocation();
-	FVector normal = OtherActor->GetActorRightVector().GetSafeNormal();
-	moveDir = ReflectVector(moveDir, normal); // Custom Reflrectio
-	
-	DrawDebugLine(GetWorld(), contactPos, 2*normal, FColor::Blue, false, 5);
-	DrawDebugLine(GetWorld(), contactPos, 2*moveDir, FColor::Red, false, 5);
-	
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "AGameMathCubeActor::NotifyActorBeginOverlap");
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "AGameMathCubeActor::OnBoxOverlap");
 }

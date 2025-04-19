@@ -45,6 +45,8 @@ bool AAOVCubeActor::IsPlayerInSight()
 		if (GetWorld()->LineTraceSingleByChannel(hit, GetActorLocation(), GetActorLocation() + dir * AOVViewDistance, ECC_Visibility))
 		{
 			DrawDebugLine(GetWorld(), GetActorLocation(), GetActorLocation() + dir * AOVViewDistance,  FColor::Red, false, 5);
+			return true;
 		}
 	}
+	return false;
 }

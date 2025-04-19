@@ -30,10 +30,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector moveDir;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	UBoxComponent* Boxcomp;
 
 	UFUNCTION()
 	void OnBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
-	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 };
