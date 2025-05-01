@@ -8,7 +8,6 @@
 #include "MontecarloPIActor.h"
 #include "TaylorSeriesApproximationofSin.h"
 
-
 AMathBundle::AMathBundle()
 {
 	PrimaryActorTick.bCanEverTick = true;
